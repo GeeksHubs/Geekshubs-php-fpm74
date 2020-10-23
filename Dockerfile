@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     openssl \
     unzip \
     wget \
-    supervisor
+    supervisor \
+    cron
 
 RUN apt-get install -y zlib1g-dev
 RUN apt-get install -y libpq-dev
