@@ -51,13 +51,24 @@ RUN docker-php-ext-install curl
 RUN docker-php-ext-install xmlrpc
 RUN docker-php-ext-install xmlwriter
 RUN docker-php-ext-install xml
-RUN docker-php-ext-install curl
 
 #install Imagemagick & PHP Imagick ext
 RUN apt-get update && apt-get install -y \
         libmagickwand-dev --no-install-recommends
 
 RUN pecl install imagick && docker-php-ext-enable imagick
+
+
+#APM -AGENT
+RUN mkdir -p /home/apm-agent && \
+    cd /home/apm-agent && \
+    git clone https://github.com/elastic/apm-agent-php.git apm && \
+    cd apm/src/ext && \
+    /usr/local/bin/phpize && ./configure --enable-elastic_apm && \
+    make clean && make && make install
+
+COPY ./elastic_apm.ini /usr/local/etc/php/conf.d/elastic_apm.ini
+
 
 #Configuración XDEBug
 RUN pecl install xdebug
