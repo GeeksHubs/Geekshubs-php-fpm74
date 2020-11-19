@@ -68,7 +68,8 @@ RUN mkdir -p /home/apm-agent && \
     make clean && make && make install
 
 COPY ./elastic_apm.ini /usr/local/etc/php/conf.d/elastic_apm.ini
-
+RUN echo 'extension=elastic_apm.so' > /usr/local/etc/php/php.ini
+RUN echo 'elastic_apm.bootstrap_php_part_file=/home/apm-agent/apm/src/bootstrap_php_part.php' > /usr/local/etc/php/php.ini
 
 #Configuración XDEBug
 RUN pecl install xdebug
