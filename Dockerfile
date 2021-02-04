@@ -60,16 +60,16 @@ RUN pecl install imagick && docker-php-ext-enable imagick
 
 
 #APM -AGENT
-RUN mkdir -p /home/apm-agent && \
-    cd /home/apm-agent && \
-    git clone https://github.com/elastic/apm-agent-php.git apm && \
-    cd apm/src/ext && \
-    /usr/local/bin/phpize && ./configure --enable-elastic_apm && \
-    make clean && make && make install
+# RUN mkdir -p /home/apm-agent && \
+#     cd /home/apm-agent && \
+#     git clone https://github.com/elastic/apm-agent-php.git apm && \
+#     cd apm/src/ext && \
+#     /usr/local/bin/phpize && ./configure --enable-elastic_apm && \
+#     make clean && make && make install
 
-COPY ./elastic_apm.ini /usr/local/etc/php/conf.d/elastic_apm.ini
-RUN echo 'extension=elastic_apm.so' >> /usr/local/etc/php/php.ini
-RUN echo 'elastic_apm.bootstrap_php_part_file=/home/apm-agent/apm/src/bootstrap_php_part.php' >> /usr/local/etc/php/php.ini
+# COPY ./elastic_apm.ini /usr/local/etc/php/conf.d/elastic_apm.ini
+# RUN echo 'extension=elastic_apm.so' >> /usr/local/etc/php/php.ini
+# RUN echo 'elastic_apm.bootstrap_php_part_file=/home/apm-agent/apm/src/bootstrap_php_part.php' >> /usr/local/etc/php/php.ini
 
 #Configuración XDEBug
 RUN pecl install xdebug
