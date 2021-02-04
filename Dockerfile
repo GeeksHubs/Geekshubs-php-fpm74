@@ -68,8 +68,8 @@ RUN mkdir -p /home/apm-agent && \
     make clean && make && make install
 
 COPY ./elastic_apm.ini /usr/local/etc/php/conf.d/elastic_apm.ini
-RUN echo 'extension=elastic_apm.so' > /usr/local/etc/php/php.ini
-RUN echo 'elastic_apm.bootstrap_php_part_file=/home/apm-agent/apm/src/bootstrap_php_part.php' > /usr/local/etc/php/php.ini
+RUN echo 'extension=elastic_apm.so' >> /usr/local/etc/php/php.ini
+RUN echo 'elastic_apm.bootstrap_php_part_file=/home/apm-agent/apm/src/bootstrap_php_part.php' >> /usr/local/etc/php/php.ini
 
 #Configuración XDEBug
 RUN pecl install xdebug
@@ -80,3 +80,7 @@ RUN echo 'xdebug.remote_connect_back=1' >> /usr/local/etc/php/conf.d/docker-php-
 RUN echo 'xdebug.idekey = PHPSTORM' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo 'xdebug.remote_autostart=1' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 RUN echo 'xdebug.max_nesting_level=4096' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+##MAX FILE SIZE
+RUN echo 'upload_max_filesize = 20M' >> /usr/local/etc/php/php.ini
+RUN echo 'post_max_size = 40M' >> /usr/local/etc/php/php.ini
