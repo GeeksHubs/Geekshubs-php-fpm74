@@ -26,7 +26,8 @@ RUN composer --version
 ADD ./www.conf   /usr/local/etc/php-fpm.d/www.conf
 
 #Setear TimeZone.
-RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo "Europe/Madrid" > /etc/timezone
+ENV TZ=America/Los_Angeles
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN echo '[PHP]\ndate.timezone ="Europe/Madrid"' > /usr/local/etc/php/php.ini
 
 # Install Postgre PDO
