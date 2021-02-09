@@ -26,8 +26,8 @@ RUN composer --version
 ADD ./www.conf   /usr/local/etc/php-fpm.d/www.conf
 
 #Setear TimeZone.
-RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo "UTC" > /etc/timezone
-RUN echo '[PHP]\ndate.timezone ="UTC"' > /usr/local/etc/php/php.ini
+RUN ln -snf /usr/share/zoneinfo/UTC /etc/localtime && echo "Europe/Madrid" > /etc/timezone
+RUN echo '[PHP]\ndate.timezone ="Europe/Madrid"' > /usr/local/etc/php/php.ini
 
 # Install Postgre PDO
 RUN apt-get install -y libxml2-dev
