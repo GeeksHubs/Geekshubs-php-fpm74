@@ -1,6 +1,7 @@
 FROM php:7.4-fpm as geekshubs-php-fpm74
 ARG TIMEZONE
 
+#PRUEBA COMENTARIO ELIMINAR
 MAINTAINER Geekshubs
 
 RUN apt-get update && apt-get install -y \
