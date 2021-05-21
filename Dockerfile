@@ -1,8 +1,8 @@
 FROM php:7.4-fpm as geekshubs-php-fpm74
 ARG TIMEZONE
 
-#PRUEBA COMENTARIO ELIMINAR
-MAINTAINER Geekshubs
+
+LABEL maintainer="Geekshubs xavi@geekshubs.com"
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -30,6 +30,9 @@ ADD ./www.conf   /usr/local/etc/php-fpm.d/www.conf
 ENV TZ=America/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN echo '[PHP]\ndate.timezone ="Europe/Madrid"' > /usr/local/etc/php/php.ini
+
+#Add Xdebug coverage Test
+RUN echo 'xdebug.mode="coverage"'> /usr/local/etc/php/php.ini
 
 # Install Postgre PDO
 RUN apt-get install -y libxml2-dev
