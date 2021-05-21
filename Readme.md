@@ -29,22 +29,22 @@ From Docker Hub.
 
 In your terminal execute this sentences
 ```terminal
-docker pull geekshubs/geekshubs-php-fpm72
-docker run -p 9000:9000 geekshubs/geekshubs-php-fpm72  
+docker pull geekshubs/geekshubs-php-fpm74
+docker run -p 9000:9000 geekshubs/geekshubs-php-fpm74  
 ```
 From Docker File.
 
 In your terminal in same folder you down dockerfile execute this sentences.
 ```terminal
-docker build -t geekshubs/geekshubs-php-fpm72 .
-docker run -p 9000:9000  --name geekshubs_php72 geekshubs/geekshubs-php-fpm72 
+docker build -t geekshubs/geekshubs-php-fpm74 .
+docker run -p 9000:9000  --name geekshubs_php74 geekshubs/geekshubs-php-fpm74 
 ```
 
 ## :arrow_forward: How to use.
 In your web server to use this container add the proxy pass for example:.
 ### Apache.
 ```conf
-ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://geekshubs_php72:9000/var/www/html/public/$1
+ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://geekshubs_php74:9000/var/www/html/public/$1
 ```
 
 ## :mag_right: Change log
