@@ -87,5 +87,5 @@ RUN echo 'xdebug.remote_autostart=1' >> /usr/local/etc/php/conf.d/docker-php-ext
 RUN echo 'xdebug.max_nesting_level=4096' >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 ##MAX FILE SIZE
-RUN echo 'upload_max_filesize = 20M' >> /usr/local/etc/php/php.ini
-RUN echo 'post_max_size = 40M' >> /usr/local/etc/php/php.ini
+RUN echo 'upload_max_filesize = 200M' >> /usr/local/etc/php/php.ini
+RUN echo 'post_max_size = 150M' >> /usr/local/etc/php/php.ini
